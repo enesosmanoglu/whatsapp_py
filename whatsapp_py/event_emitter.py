@@ -1,6 +1,17 @@
 from typing import Callable
 
 class EventEmitter:
+    """Emits events and calls the functions that are listening to them.
+
+    Attributes:
+        __listeners (dict[str, list[Callable]]): A dictionary that maps events to a list of functions that are listening to them.
+    
+    Methods:
+        on(event: str): A decorator that adds a function to the list of functions that are listening to the event.
+        emit(event: str, *args, **kwargs): Calls all the functions that are listening to the event.
+        remove(event: str, func: Callable): Removes a function from the list of functions that are listening to the event.
+        clear(event: str): Removes all the functions from the list of functions that are listening to the event.
+    """
     __listeners: dict[str, list[Callable]] = {}
 
     @staticmethod

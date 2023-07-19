@@ -19,6 +19,12 @@ from .event_listener import EventListener
 
 WINDOW_CLOSED_MESSAGE_PREFIX = 'Unable to evaluate script: no such window: target window already closed'
 
+class WebDriver:
+    Chrome = Chrome
+    Edge = Edge
+    Firefox = Firefox
+    Safari = Safari
+
 class Browser:
     __screenshot_path: str = 'screenshot.png'
 
