@@ -235,6 +235,7 @@ class Client(EventEmitter):
             return
         
         if self.is_true_first_time(Check.QR_READY):
+            self.emit(ClientEvents.QR_CODE, self.qr_content)
             if self.__should_qr_code_printed:
                 self.print_qr_code()
         

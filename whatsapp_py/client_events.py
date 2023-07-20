@@ -31,3 +31,6 @@ class ClientEvents:
 
     NOTIFICATION = 'notification'
     """Fired when a notification is received."""
+
+    QR_CODE = 'qr_code'
+    """Fired when a QR code is received."""
