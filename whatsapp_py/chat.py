@@ -14,7 +14,20 @@ if TYPE_CHECKING:
     from .client import Client
 
 class Chat:
-    is_phone_number_invalid = False
+    """Represents a chat in WhatsApp Web
+    
+    Parameters:
+        client (Client): The client that owns this chat
+        phone_number (str): The phone number of the chat
+    """
+    is_phone_number_invalid:bool = False
+    """Whether the phone number is invalid or not"""
+
+    client:Client = None
+    """The client that owns this chat"""
+
+    phone_number:str = None
+    """The phone number of the chat"""
 
     def __init__(self, client:Client, phone_number):
         self.client = client
@@ -24,16 +37,40 @@ class Chat:
         return f'Chat({self.phone_number})'
 
     def debug_info(self, *args, **kwargs):
+        """Calls [`Client.debug_info`](./#client.Client.debug_info) with the chat's name as prefix
+        
+        Parameters:
+            *args (Any): The arguments to print
+            **kwargs (Any): The keyword arguments to print
+        """
         self.client.debug_info(f'[{self}]', *args, **kwargs)
     
     def debug_error(self, *args, **kwargs):
+        """Calls [`Client.debug_error`](./#client.Client.debug_error) with the chat's name as prefix
+
+        Parameters:
+            *args (Any): The arguments to print
+            **kwargs (Any): The keyword arguments to print
+        """
         self.client.debug_error(f'[{self}]', *args, **kwargs)
 
     @property
     def is_open(self):
+        """Calls [`Client.is_chat_open`](./#client.Client.is_chat_open) with the chat's phone number
+
+        Returns:
+            is_open (bool): Whether the chat is open or not
+        """
         return self.client.is_chat_open(self.phone_number)
 
-    def open(self):
+    def open(self) -> bool:
+        """Calls [`Client.load_chat_page`](./#client.Client.load_chat_page) with the chat's instance
+
+        * Waits until chat page is loaded
+
+        Returns:
+            is_open (bool): Whether the chat is open or not
+        """
         self._is_loading = True
         self.client.load_chat_page(self)
         
@@ -74,13 +111,29 @@ class Chat:
         try:
             self.client.browser.wait_until(lambda: self.is_open)
         except:
-            raise Exception('Unable to open chat.')
+            # raise Exception('Unable to open chat.')
             self.debug_error('Unable to open chat.')
             return False
         
         return True
     
     def send_message(self, content:str=None, file:str=None, media:str=None, delay:timedelta = None, at_time:datetime=None, nonce:str=str(datetime.now().timestamp())) -> Message:
+        """Sends a message to the chat
+
+        Parameters:
+            content (str, optional): The content of the message
+            file (str, optional): The path to the file to send
+            media (str, optional): The path to the media to send
+            delay (timedelta, optional): The delay before sending the message
+            at_time (datetime, optional): The time to send the message
+            nonce (str, optional): The nonce of the message. 
+            
+        !!!info
+            `nonce` can be used to identify the message later (e.g. on `ClientEvent.TASK_COMPLETED`)
+
+        Returns:
+            message (Message): The message that was sent
+        """
         message = Message(chat=self, content=content, file=file, media=media, time=None, nonce=nonce)
         task = MessageTask(client=self.client, message=message)
 
@@ -97,6 +150,14 @@ class Chat:
         
     
     def _send_message(self, message:Message) -> Message:
+        """Sends a message to the chat (internal)
+
+        Parameters:
+            message (Message): The message to send
+        
+        Returns:
+            message (Message): The message that was sent
+        """
         if self.is_phone_number_invalid:
             raise Exception(f"Invalid phone number.")
             self.debug_error(f"Invalid phone number. Please don't use this chat object anymore.")

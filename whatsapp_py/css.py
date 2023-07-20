@@ -1,4 +1,5 @@
 class CSS:
+    """Contains CSS Selectors for WhatsApp Web"""
     APP = f"div#app"
     _TEXT = f".selectable-text.copyable-text"
 
@@ -48,4 +49,8 @@ class CSS:
 
     @staticmethod
     def concat(*args: str) -> str:
+        """Concatenates the given arguments with a space in between.
+        
+        Args:
+            *args (str): The arguments to concatenate."""
         return " ".join(args)

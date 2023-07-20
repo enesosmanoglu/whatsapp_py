@@ -15,7 +15,20 @@ nav:
     - Basic: usage/basic.md
     - Events: usage/events.md
   # - Examples: examples.md
-  - API Reference: reference.md
+  - API Reference:
+    - Client: reference/client.md
+    - ClientEvents: reference/client_events.md
+    - Check: reference/check.md
+    - Browser: reference/browser.md
+    - EventEmitter: reference/event_emitter.md
+    - Task: reference/task.md
+
+    - CSS: reference/css.md
+    - Helpers: reference/helpers.md
+
+    - Chat: reference/chat.md
+    - Message: reference/message.md
+    - MessageNotification: reference/message_notification.md
   # - Changelog: changelog.md
 
 plugins:
@@ -26,6 +39,7 @@ plugins:
           paths: [whatsapp_py]
           options:
             show_root_heading: true
+            show_source: true
 
 theme:
   icon:
@@ -41,7 +55,7 @@ theme:
     - navigation.expand
     - navigation.top
     - toc.follow
-    - toc.integrate
+    # - toc.integrate
     - search.suggest
     - search.highlight
     - search.share

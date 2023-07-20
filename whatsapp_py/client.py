@@ -79,15 +79,26 @@ class Client(EventEmitter):
         self.start()
 
     def debug_info(self, *args, **kwargs):
-        """Prints an info to the console if the debug is enabled"""
+        """Prints an info to the console if the debug is enabled
+        
+        Parameters:
+            *args (Any): The arguments to print
+            **kwargs (Any): The keyword arguments to print
+        """
         if self.__debug_enabled:
             print('\t[INFO]', *args, **kwargs)
     
     def debug_error(self, *args, **kwargs):
-        """
-        * Emits the `ClientEvents.ERROR` event
-        * Prints an error message to the console if the debug is enabled
-        * Takes a screenshot of the browser window and saves it to the debug folder if the debug is enabled
+        """Emits the `ClientEvents.ERROR` event
+
+        If the [`__debug_enabled`](./#client.Client.__debug_enabled) is `True`:
+        
+        * Prints an error message to the console
+        * Takes a screenshot of the browser window and saves it to the debug folder
+        
+        Parameters:
+            *args (Any): The arguments to print
+            **kwargs (Any): The keyword arguments to print
         """
         self.emit(ClientEvents.ERROR, *args, **kwargs)
 
@@ -598,7 +609,7 @@ class Client(EventEmitter):
 
     def wait_for_login(self) -> None:
         """Waits for the user to login
-        
+
         * Does nothing if the user is already logged in
         * Removes the check for login screen when the user is logged in
         """

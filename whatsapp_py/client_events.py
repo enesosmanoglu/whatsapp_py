@@ -1,4 +1,7 @@
 class ClientEvents:
+    """Client events."""
+    # TODO: Convert to Enum
+
     BROWSER_CREATED = 'browser_created'
     """Fired when the browser is created."""
 

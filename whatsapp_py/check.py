@@ -1,6 +1,8 @@
 from typing import Callable
 
 class Check:
+    """Contains all the check types that are used to check if the check is true or not."""
+    # TODO: Convert to Enum
     WHATSAPP_URL = 'whatsapp_url'
     WHATSAPP_READY = 'whatsapp_ready'
     CONFIRM_POPUP = 'confirm_popup'

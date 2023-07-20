@@ -9,6 +9,21 @@ if TYPE_CHECKING:
     from .browser import WebElement
 
 class Message:
+    """Contains the information about a message.
+
+    Attributes:
+        chat (Chat): The chat that the message belongs to.
+        id (str): The id of the message.
+        content (str): The content of the message.
+        file (str): The path to the file that the message contains.
+        media (str): The path to the media that the message contains.
+        time (datetime): The time that the message was sent.
+        nonce (str): The nonce of the message.
+            
+    !!!info
+        `nonce` can be used to identify the message later (e.g. on `ClientEvent.TASK_COMPLETED`)
+    """
+
     def __init__(self, chat:Chat=None, id:str=None, content:str=None, file:str=None, media:str=None, time:datetime=None, nonce:str=str(datetime.now().timestamp())):
         self.chat = chat
         self.id = id
@@ -40,6 +55,11 @@ class Message:
         return f"Message({', '.join(str_args)})"
 
     def __check_arguments(self):
+        """Checks if the arguments are valid. 
+        
+        Raises:
+            ValueError: If the arguments are not valid.
+        """
         if self.content is not None and self.content.replace(' ', '') == "":
             self.content = None
 
@@ -68,14 +88,38 @@ class Message:
                 raise ValueError("Media does not exist.")
     
     def set_element(self, element: WebElement) -> Message:
+        """Sets the element of the message.
+
+        Args:
+            element (WebElement): The element of the message.
+
+        Returns:
+            message (Message): The message itself.
+        """
         self.element = element
         return self
 
     def set_id(self, id:str) -> Message:
+        """Sets the id of the message.
+
+        Args:
+            id (str): The id of the message.
+
+        Returns:
+            message (Message): The message itself.
+        """
         self.id = id
         return self
     
     def set_time(self, time:datetime) -> Message:
+        """Sets the time of the message.
+
+        Args:
+            time (datetime): The time of the message.
+
+        Returns:
+            message (Message): The message itself.
+        """
         self.time = time
         return self
     
