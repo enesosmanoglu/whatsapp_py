@@ -1,2 +1,2 @@
 # Chat Reference
-::: chat.Chat
+::: chat

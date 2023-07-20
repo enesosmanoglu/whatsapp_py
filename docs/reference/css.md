@@ -1,2 +1,2 @@
 # CSS Reference
-::: css.CSS
+::: css

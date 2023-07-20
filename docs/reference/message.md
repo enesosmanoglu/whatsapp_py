@@ -1,2 +1,2 @@
 # Message Reference
-::: message.Message
+::: message

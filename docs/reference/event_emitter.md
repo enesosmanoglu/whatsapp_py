@@ -1,2 +1,2 @@
 # EventEmitter Reference
-::: event_emitter.EventEmitter
+::: event_emitter

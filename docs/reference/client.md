@@ -1,2 +1,2 @@
 # Client Reference
-::: client.Client
+::: client

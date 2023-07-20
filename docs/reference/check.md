@@ -1,2 +1,2 @@
 # Check Reference
-::: check.Check
+::: check

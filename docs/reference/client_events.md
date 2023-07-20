@@ -1,2 +1,2 @@
 # Client Events
-::: client_events.ClientEvents
+::: client_events

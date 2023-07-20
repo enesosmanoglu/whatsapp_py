@@ -1,2 +1,2 @@
 # MessageNotification Reference
-::: message_notification.MessageNotification
+::: message_notification

@@ -38,9 +38,21 @@ plugins:
         python:
           paths: [whatsapp_py]
           options:
-            show_root_heading: true
-            show_source: true
-
+            # show_root_heading: true
+            show_root_toc_entry : false
+            show_root_full_path : false
+            show_category_heading : true
+            # show_symbol_type_heading : true
+            # show_symbol_type_toc : true
+            show_source: false
+            members_order: "source"
+            filters: ""
+            #   - "!^_"
+            separate_signature : true
+            signature_crossrefs : true
+            show_if_no_docstring : true
+            # merge_init_into_class : true
+            # show_submodules : true
 theme:
   icon:
     logo: material/whatsapp
@@ -50,7 +62,7 @@ theme:
     # - content.action.edit
     - navigation.footer
     - navigation.tabs
-    - navigation.tabs.sticky
+    # - navigation.tabs.sticky
     - navigation.sections
     - navigation.expand
     - navigation.top

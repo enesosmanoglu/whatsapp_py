@@ -723,6 +723,9 @@ class Client(EventEmitter):
 
         Returns:
             chat (Chat): Chat object
+
+        Raises:
+            Exception: If the phone number is invalid
         """
         chat = Chat(client=self, phone_number=phone_number)
 
