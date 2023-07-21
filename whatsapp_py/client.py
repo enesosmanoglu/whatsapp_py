@@ -20,12 +20,12 @@ from .notification import Notification
 class Client(EventEmitter):
     """The main class of the library. It handles the browser and the events.
 
-    Args:
-        WebDriver (WebDriver): The webdriver to use. Can be Client.Chrome, Client.Edge, Client.Firefox or Client.Safari (default: Client.Chrome)
-        headless (bool): Whether to run the browser in headless mode or not (default: True)
-        user_data_dir (str): The path to the user data directory (default: 'user_data')
-        debug (bool): Whether to print debug messages or not (default: False)
-        print_qr_code (bool): Whether to print the QR code to the console or not (default: True)
+    Parameters:
+        WebDriver (Chrome|Edge|Firefox|Safari): The webdriver to use for the browser.
+        headless (bool): Whether to run the browser in headless mode or not
+        user_data_dir (str): The path to the user data directory
+        debug (bool): Whether to print debug messages or not
+        print_qr_code (bool): Whether to print the QR code to the console or not
 
     Raises:
         Exception: If the webdriver is not supported
