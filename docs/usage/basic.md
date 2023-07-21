@@ -44,13 +44,13 @@ See [Client()](/reference/client/#client.Client) for more information.
 ```py
 chat = client.new_chat('{phone_number}')
 ```
-!!! info
+!!! warning
 
     For the phone number, you must use any of the following formats:
     
-    * `1234567890`
-    * `+1234567890`
-    * `+1 234 567 890`
+    * **+1234567890** _`(country code is required)`_
+    * **1234567890** _`(without plus sign)`_
+    * **+1 234 567 890** _`(spaces are ignored)`_
 
 ---
 

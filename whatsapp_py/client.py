@@ -15,7 +15,7 @@ from .browser import WebElement
 from .check import Check
 from .task import TaskManager
 from .client_events import ClientEvents
-from .message_notification import MessageNotification
+from .notification import Notification
 
 class Client(EventEmitter):
     """The main class of the library. It handles the browser and the events.
@@ -100,7 +100,7 @@ class Client(EventEmitter):
             *args (Any): The arguments to print
             **kwargs (Any): The keyword arguments to print
         """
-        self.emit(ClientEvents.ERROR, *args, **kwargs)
+        self.emit(ClientEvents.ERROR, Exception(*args, **kwargs))
 
         if self.__debug_enabled:
             print(f'\t[ERROR-{self.__error_count}]', *args, **kwargs)
@@ -213,7 +213,7 @@ class Client(EventEmitter):
             #   `<message_body>` on `body`
             phone_number = raw_notification['tag'].split('@')[0]
             body = raw_notification['body']
-            notification = MessageNotification(phone_number, body)
+            notification = Notification(phone_number, body)
 
             self.debug_info('New notification:', notification)
             self.emit(ClientEvents.NOTIFICATION, notification)

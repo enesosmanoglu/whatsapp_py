@@ -37,7 +37,7 @@ class Chat:
         return f'Chat({self.phone_number})'
 
     def debug_info(self, *args, **kwargs):
-        """Calls [`Client.debug_info`](./#client.Client.debug_info) with the chat's name as prefix
+        """Calls [`Client.debug_info`](../client/#client.Client.debug_info) with the chat's name as prefix
         
         Parameters:
             *args (Any): The arguments to print
@@ -46,7 +46,7 @@ class Chat:
         self.client.debug_info(f'[{self}]', *args, **kwargs)
     
     def debug_error(self, *args, **kwargs):
-        """Calls [`Client.debug_error`](./#client.Client.debug_error) with the chat's name as prefix
+        """Calls [`Client.debug_error`](../client/#client.Client.debug_error) with the chat's name as prefix
 
         Parameters:
             *args (Any): The arguments to print
@@ -56,7 +56,7 @@ class Chat:
 
     @property
     def is_open(self):
-        """Calls [`Client.is_chat_open`](./#client.Client.is_chat_open) with the chat's phone number
+        """Calls [`Client.is_chat_open`](../client/#client.Client.is_chat_open) with the chat's phone number
 
         Returns:
             is_open (bool): Whether the chat is open or not
@@ -64,7 +64,7 @@ class Chat:
         return self.client.is_chat_open(self.phone_number)
 
     def open(self) -> bool:
-        """Calls [`Client.load_chat_page`](./#client.Client.load_chat_page) with the chat's instance
+        """Calls [`Client.load_chat_page`](../client/#client.Client.load_chat_page) with the chat's instance
 
         * Waits until chat page is loaded
 

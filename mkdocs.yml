@@ -16,19 +16,27 @@ nav:
     - Events: usage/events.md
   # - Examples: examples.md
   - API Reference:
-    - Client: reference/client.md
-    - ClientEvents: reference/client_events.md
-    - Check: reference/check.md
-    - Browser: reference/browser.md
-    - EventEmitter: reference/event_emitter.md
-    - Task: reference/task.md
+    - References:
+      - Main:
+        - Client: reference/client.md
 
-    - CSS: reference/css.md
-    - Helpers: reference/helpers.md
+        - Client Utils:
+          - Browser: reference/browser.md
+          - ClientEvents: reference/client_events.md
+          - Check: reference/check.md
+          - Task: reference/task.md
 
-    - Chat: reference/chat.md
-    - Message: reference/message.md
-    - MessageNotification: reference/message_notification.md
+        - Chat API:
+          - Chat: reference/chat.md
+          - Message: reference/message.md
+          - Notification: reference/notification.md
+
+      - Globals:
+        - EventEmitter: reference/event_emitter.md
+        - CSS: reference/css.md
+        - Helpers: reference/helpers.md
+        - Constants: reference/constants.md
+
   # - Changelog: changelog.md
 
 plugins:
@@ -46,8 +54,8 @@ plugins:
             # show_symbol_type_toc : true
             show_source: false
             members_order: "source"
-            filters: ""
-            #   - "!^_"
+            filters:
+              - "!^_"
             separate_signature : true
             signature_crossrefs : true
             show_if_no_docstring : true

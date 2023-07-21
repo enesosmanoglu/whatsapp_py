@@ -17,6 +17,9 @@ class ClientEvents:
     ERROR = 'error'
     """Fired when the client encounters an error."""
 
+    QR_CODE = 'qr_code'
+    """Fired when a QR code is received. Also fired when the QR code is updated."""
+
     LOGGED_IN = 'logged_in'
     """Fired when the client is logged in."""
 
@@ -31,6 +34,3 @@ class ClientEvents:
 
     NOTIFICATION = 'notification'
     """Fired when a notification is received."""
-
-    QR_CODE = 'qr_code'
-    """Fired when a QR code is received."""

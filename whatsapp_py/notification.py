@@ -1,7 +1,7 @@
 
 from typing import NamedTuple
 
-class MessageNotification(NamedTuple):
+class Notification(NamedTuple):
     """Contains the information about a message notification.
 
     Attributes:
