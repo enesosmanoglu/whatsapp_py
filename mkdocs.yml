@@ -14,6 +14,7 @@ nav:
   - Usage: 
     - Basic: usage/basic.md
     - Events: usage/events.md
+    - SQL: usage/sql.md
   # - Examples: examples.md
   - API Reference:
     - References:
@@ -22,7 +23,7 @@ nav:
 
         - Client Utils:
           - Browser: reference/browser.md
-          - ClientEvents: reference/client_events.md
+          - Client Events: reference/client_events.md
           - Check: reference/check.md
           - Task: reference/task.md
 
@@ -32,10 +33,16 @@ nav:
           - Notification: reference/notification.md
 
       - Globals:
-        - EventEmitter: reference/event_emitter.md
+        - Event Emitter: reference/event_emitter.md
         - CSS: reference/css.md
         - Helpers: reference/helpers.md
         - Constants: reference/constants.md
+
+      - Database:
+        - SQL: reference/database/sql.md
+        - Connection Config: reference/database/connection_config.md
+        - Column: reference/database/column.md
+        - SQL Result: reference/database/sql_result.md
 
   # - Changelog: changelog.md
 

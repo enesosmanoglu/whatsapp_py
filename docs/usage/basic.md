@@ -44,7 +44,7 @@ See [Client()](/reference/client/#client.Client) for more information.
 ```py
 chat = client.new_chat('{phone_number}')
 ```
-!!! warning
+!!! danger
 
     For the phone number, you must use any of the following formats:
     
@@ -117,7 +117,7 @@ at_time = datetime(2023, 07, 20, 16, 54)
 chat.send_message('This is text message', at_time=at_time)
 ```
 
-!!! note
+!!! tip
     You can use ``delay`` and ``at_time`` at the same time.
 
     ```py

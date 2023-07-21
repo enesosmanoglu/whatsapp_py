@@ -110,6 +110,9 @@ class Browser:
             download_throughput (int, optional): The download throughput in bytes per second. Defaults to None.
             upload_throughput (int, optional): The upload throughput in bytes per second. Defaults to None.
         
+        Info:
+            The `throughput` parameter is a shorthand for setting both the download and upload throughput values.
+            
         Returns:
             browser (Browser): The current browser instance.
         """
