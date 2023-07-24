@@ -76,12 +76,14 @@ class Message:
             raise ValueError("Message cannot have both file and media.")
         
         if self.file is not None:
+            self.file = self.file.replace("\u202a", "").replace("\u202b", "").replace("\u202c", "").strip()
             if not os.path.isabs(self.file):
                 self.file = os.path.abspath(self.file)
             if not os.path.isfile(self.file):
                 raise ValueError("File does not exist.")
         
         if self.media is not None:
+            self.media = self.media.replace("\u202a", "").replace("\u202b", "").replace("\u202c", "").strip()
             if not os.path.isabs(self.media):
                 self.media = os.path.abspath(self.media)
             if not os.path.isfile(self.media):
