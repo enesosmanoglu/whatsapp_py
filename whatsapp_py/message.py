@@ -31,7 +31,7 @@ class Message:
         self.file = file
         self.media = media
         self.time = time
-        self.nonce = str(nonce)
+        self.nonce = nonce # str(nonce)
         self.__check_arguments()
         self.element = None
         self.error = None
