@@ -1,8 +1,8 @@
 from typing import Any, Self
 import pyodbc
-from column import Column
-from sql_result import SqlResult
-from connection_config import ConnectionConfig
+from .column import Column
+from .sql_result import SqlResult
+from .connection_config import ConnectionConfig
 
 class SQL:
     """A class that represents a connection to a SQL Server database. 

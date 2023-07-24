@@ -2,7 +2,7 @@
 from typing import Any, NamedTuple
 from pyodbc import Row
 
-from column import Column
+from .column import Column
 
 class SqlResult(NamedTuple):
     """Contains the information about a SQL query result.

@@ -35,7 +35,7 @@ sql = SQL (
         Encrypt = False,
         LongAsMax = True,
         APP = "whatsapp_py module test",
-    )
+    ),
     autocommit = True,
 )
 ```
@@ -58,7 +58,7 @@ def on_update():
     """)
     
     # Iterate through rows
-    for row in result.rows:
+    for row in result.rows_dict:
 
         id = row['id']
 
