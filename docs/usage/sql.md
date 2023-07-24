@@ -1,4 +1,94 @@
 # Using with SQL Database
+In this example, we will create a client that will send messages from a SQL database. 
+
+* The client will send messages from rows that are not completed yet. 
+* After the message is sent, the client will update the row with the message id. 
+* If the message failed to send, the client will update the row with the error message. 
+
+## Database Schema
+
+In this example database, we have 3 tables: `Tasks`, `Messages`, and `Statuses`.
+
+* `Tasks` table contains the messages that will be sent.
+* `Messages` table contains the messages that have been sent.
+* `Statuses` table contains the statuses of the messages that have been sent.
+
+Create a database named `DbWhatsApp` and run the following scripts to create the tables.
+
+#### Tasks
+
+```sql
+CREATE TABLE Tasks (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    phone_number VARCHAR(20) NOT NULL,
+    text_content VARCHAR(1000) NOT NULL,
+    file_path VARCHAR(1000) NULL,
+    media_path VARCHAR(1000) NULL,
+    start_at DATETIME NULL,
+    msg_id VARCHAR(100) NULL,
+    error VARCHAR(1000) NULL
+)
+```
+
+| Column | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `INT` | `false` | The id of the task. |
+| `phone_number` | `VARCHAR(20)` | `false` | The phone number of the recipient. |
+| `text_content` | `VARCHAR(1000)` | `false` | The text content of the message. |
+| `file_path` | `VARCHAR(1000)` | `true` | The file path of the file to be sent. |
+| `media_path` | `VARCHAR(1000)` | `true` | The media path of the media to be sent. |
+| `start_at` | `DATETIME` | `true` | The time when the message will be sent. |
+| `msg_id` | `VARCHAR(100)` | `true` | The id of the message. |
+| `error` | `VARCHAR(1000)` | `true` | The error message if the message failed to send. |
+
+#### Messages
+
+```sql
+CREATE TABLE Messages (
+    id VARCHAR(100) PRIMARY KEY,
+    sent_at DATETIME NOT NULL,
+    status_id INT NOT NULL
+)
+```
+
+| Column | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `VARCHAR(100)` | `false` | The id of the message. |
+| `sent_at` | `DATETIME` | `false` | The time when the message was sent. |
+| `status_id` | `INT` | `false` | The id of the status. |
+
+#### Statuses
+
+```sql
+CREATE TABLE Statuses (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    name VARCHAR(100) NOT NULL
+    description VARCHAR(1000) NULL
+)
+
+INSERT INTO Statuses (name, description) VALUES
+    ('msg-time', 'Sending'),
+    ('msg-check', 'Delivered'),
+    ('msg-dblcheck', 'Read')
+```
+
+| Column | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `INT` | `false` | The id of the status. |
+| `name` | `VARCHAR(100)` | `false` | The name of the status. |
+| `description` | `VARCHAR(1000)` | `true` | The description of the status. |
+
+---
+
+## How it works
+
+* The client will get all rows from `Tasks` table that are not completed yet.
+* The client will iterate through the rows.
+* The client will create a chat with the recipient's phone number.
+* The client will send the message.
+* If the message is sent successfully, the client will update the row with the message id.
+* If the message failed to send, the client will update the row with the error message.
+* The client will repeat the process every time the `UPDATE` event is emitted.
 
 ---
 
