@@ -27,8 +27,8 @@ class CSS:
     CHAT_INPUT = f"{CONVERSATION_PANEL} div[data-testid=conversation-compose-box-input] p"
     MEDIA_CAPTION = f"{APP} div[data-testid=media-caption-input-container] p"
     CLIP_BUTTON = f"{CONVERSATION_PANEL} [data-testid=conversation-clip] [role=button]"
-    DOCUMENT_INPUT = f"{APP} [data-testid=attach-document]+input"
-    MEDIA_INPUT = f"{APP} [data-testid=attach-image]+input"
+    DOCUMENT_INPUT = f"{APP} [data-testid=mi-attach-document] input"
+    MEDIA_INPUT = f"{APP} [data-testid=mi-attach-media] input"
     SEND_BUTTON = f"{APP} span[data-testid=send]"
 
     CONVERSATION_PANEL_MESSAGES = f"{CONVERSATION_PANEL} div[data-testid=conversation-panel-messages]"
