@@ -229,6 +229,8 @@ class Client(EventEmitter):
         # Check if the login screen is detected for the first time
         if self.is_true_first_time(Check.LOGIN_SCREEN):
             self.debug_info('Login screen detected')
+            Check.remove_first_check(Check.QR_REFRESH)
+            Check.remove_first_check(Check.QR_READY)
             # Start the login wait thread
             self.__login_wait_thread = threading.Thread(target=self.wait_for_login)
             self.__login_wait_thread.start()
