@@ -52,6 +52,8 @@ class Message:
             str_args.append(f"time={self.time.strftime('%d/%m/%Y %H:%M:%S')}")
         if self.nonce is not None:
             str_args.append(f"nonce={self.nonce}")
+        if self.error is not None:
+            str_args.append(f"error={self.error}")
         return f"Message({', '.join(str_args)})"
 
     def __check_arguments(self):
