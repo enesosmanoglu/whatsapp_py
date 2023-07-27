@@ -1,3 +1,6 @@
+# Debug files
+/debug/
+
 # Selenium User Data Directory
 user_data*/
 
