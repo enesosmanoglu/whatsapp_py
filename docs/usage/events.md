@@ -55,7 +55,6 @@ For the list of available events, see [All Client Events](#all-client-events) be
 |      [LOGGED_OUT](#logged-out-event)      |                                     -                                      |                                           Client logged out                                           |
 |    [TASK_STARTED](#task-started-event)    |             [`MessageTask`](/reference/task/#task.MessageTask)             |                                             Task started                                              |
 |  [TASK_COMPLETED](#task-completed-event)  |             [`MessageTask`](/reference/task/#task.MessageTask)             |                                            Task completed                                             |
-|    [NOTIFICATION](#notification-event)    |    [`Notification`](/reference/notification/#notification.Notification)    |                                         Notification received                                         |
 
 ---
 
@@ -177,14 +176,4 @@ def on_task_started(message_task):
 @client.on(ClientEvents.TASK_COMPLETED)
 def on_task_completed(message_task):
     print(">> Client task completed", message_task)
-```
-
-#### Notification Event
-* Fired when a notification is received.
-* See [Notification](/reference/notification) for more details.
-
-```py
-@client.on(ClientEvents.NOTIFICATION)
-def on_notification(notification):
-    print(">> Client notification", notification)
 ```
