@@ -86,8 +86,7 @@ class Browser:
             self.__webdriver_options.add_argument('window-size=1500,900')
                 
         self.__webdriver_options.add_experimental_option('excludeSwitches', ['enable-logging'])
-        self.__webdriver_options.add_experimental_option('prefs', {'profile.exit_type': 'Normal', 'profile.default_content_setting_values.notifications': 1})
-        self.__webdriver_options.add_argument("--enable-features=WebNotifications")
+        self.__webdriver_options.add_experimental_option('prefs', {'profile.exit_type': 'Normal', 'profile.default_content_setting_values.notifications': 0})
         self.__webdriver_options.add_argument("--disable-popup-blocking")
         self.__webdriver_options.add_argument("--disable-infobars")
         self.__webdriver_options.add_argument("--disable-extensions")
@@ -317,10 +316,3 @@ class Browser:
             return self._driver.current_url
         except:
             return ''
-
-    @property
-    def notifications(self):
-        return self._driver.execute_script('return window.notifications;') or []
-    
-    def get_notification(self):
-        return self._driver.execute_script(f'return window.notifications?.shift();')

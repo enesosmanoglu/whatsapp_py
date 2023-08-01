@@ -31,6 +31,3 @@ class ClientEvents:
 
     TASK_COMPLETED = 'task_completed'
     """Fired when a task is completed."""
-
-    NOTIFICATION = 'notification'
-    """Fired when a notification is received."""

@@ -15,7 +15,6 @@ from .browser import WebElement
 from .check import Check
 from .task import TaskManager
 from .client_events import ClientEvents
-from .notification import Notification
 
 class Client(EventEmitter):
     """The main class of the library. It handles the browser and the events.
@@ -201,22 +200,6 @@ class Client(EventEmitter):
         self.__update_loop_timer.start()
 
         self.emit(ClientEvents.UPDATE)
-
-        # Check for the new notifications
-        notifications = self.browser.notifications
-        if len(notifications) > 0:
-            # get_notification() reduces the notifications list by one
-            # so the length of the notifications can be used to check if there are any new notifications
-            raw_notification = self.browser.get_notification()
-            # WhatsApp sends the notifications in the format of
-            #   `<phone_number>@c.us` on `tag`
-            #   `<message_body>` on `body`
-            phone_number = raw_notification['tag'].split('@')[0]
-            body = raw_notification['body']
-            notification = Notification(phone_number, body)
-
-            self.debug_info('New notification:', notification)
-            self.emit(ClientEvents.NOTIFICATION, notification)
 
         # Check for the loading screen
         if self.is_true(Check.LOADING_SCREEN):
