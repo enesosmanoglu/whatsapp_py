@@ -30,7 +30,6 @@ nav:
         - Chat API:
           - Chat: reference/chat.md
           - Message: reference/message.md
-          - Notification: reference/notification.md
 
       - Globals:
         - Event Emitter: reference/event_emitter.md
