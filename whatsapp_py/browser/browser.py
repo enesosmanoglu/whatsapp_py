@@ -304,8 +304,10 @@ class Browser:
 
     @property
     def is_closed(self) -> bool:
-        if len(self._driver.get_log('driver')) > 0:
-            if WINDOW_CLOSED_MESSAGE_PREFIX in self._driver.get_log('driver')[-1]['message']:
+        logs = self._driver.get_log('driver')
+        log_count = len(logs)
+        if log_count > 0:
+            if WINDOW_CLOSED_MESSAGE_PREFIX in logs[-1]['message']:
                 return True
         return False
 
